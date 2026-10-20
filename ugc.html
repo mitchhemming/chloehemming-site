@@ -73,8 +73,9 @@ h2 { font-family: var(--fh); font-weight: 400; font-size: 24px; line-height: 1.1
 .clip .mute { position: absolute; right: 8px; bottom: 8px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(42,31,36,.55); color: #fff; font-size: 13px; cursor: pointer; }
 
 /* chips */
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { background: var(--paper); border: 1px solid rgba(255,255,255,.9); border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: var(--ink70); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: var(--paper); border: 1px solid rgba(255,255,255,.9); border-radius: 999px; padding: 7px 11px; font-size: 13px; font-weight: 600; color: var(--ink70); white-space: nowrap; }
+@media (min-width: 600px) { .chips { gap: 8px; } .chip { padding: 8px 14px; font-size: 14px; } }
 
 /* two column lists */
 .list { display: grid; gap: 8px; }
