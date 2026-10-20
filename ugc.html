@@ -108,6 +108,29 @@ details .body p + p { margin-top: 8px; }
 .btn:hover, .btn:focus-visible { background: #B4557A; transform: translateY(-1px); outline: none; }
 .cta small { display: block; margin-top: 12px; color: var(--ink50); font-size: 13px; }
 
+/* form */
+.form { background: var(--paper); border-radius: 16px; padding: 22px 20px; }
+.form h2 { text-align: center; }
+.form > p { text-align: center; color: var(--ink70); font-size: 15px; margin: -6px 0 18px; }
+.field { margin-top: 14px; }
+.field label { display: block; font-size: 13.5px; font-weight: 700; color: var(--ink70); margin-bottom: 6px; }
+.field input, .field textarea { width: 100%; font: inherit; font-size: 15px; padding: 11px 13px; border: 1px solid var(--line2); border-radius: 10px; background: var(--bg); color: var(--ink); }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--rose2); background: #fff; }
+.field textarea { min-height: 84px; resize: vertical; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opts label { margin: 0; cursor: pointer; }
+.opts input { position: absolute; opacity: 0; width: 0; height: 0; }
+.opts span { display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line2); background: var(--bg); font-size: 14px; font-weight: 600; color: var(--ink70); transition: background .15s, border-color .15s, color .15s; }
+.opts input:checked + span { background: var(--rose2); border-color: var(--rose2); color: #fff; }
+.opts input:focus-visible + span { outline: 2px solid var(--rose); outline-offset: 2px; }
+.form .btn { width: 100%; margin-top: 18px; border: 0; cursor: pointer; font-family: inherit; }
+.form .btn:disabled { opacity: .6; cursor: default; transform: none; }
+.form .msg { text-align: center; font-size: 14px; color: var(--ink70); margin-top: 12px; }
+.form .msg.ok { color: var(--rose2); font-weight: 700; }
+.form small { display: block; text-align: center; margin-top: 12px; color: var(--ink50); font-size: 13px; }
+.form small a { color: var(--rose2); font-weight: 600; }
+.hp { position: absolute; left: -9999px; }
+
 footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(--ink50); letter-spacing: .02em; }
 @media (prefers-reduced-motion: reduce) { summary::after, .btn { transition: none; } }
 </style>
@@ -195,12 +218,43 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
   </section>
 
   <section id="contact">
-    <div class="cta">
+    <form class="form" id="ugc-form" novalidate>
       <h2>Let's make something</h2>
-      <p>Tell me about the product, the content you're after and your timeline. I reply within two business days.</p>
-      <a class="btn" href="mailto:hello@chloehemming.com?subject=UGC%20enquiry">Email me</a>
-      <small>hello@chloehemming.com</small>
-    </div>
+      <p>A few quick details and I'll reply within two business days.</p>
+      <input type="hidden" name="access_key" value="WEB3FORMS_KEY">
+      <input type="hidden" name="subject" value="UGC enquiry from chloehemming.com">
+      <input type="hidden" name="from_name" value="chloehemming.com">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+      <div class="field"><label for="brand">Brand</label><input id="brand" name="Brand" type="text" placeholder="Brand name" required></div>
+      <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" placeholder="you@brand.com" required autocomplete="email"></div>
+
+      <div class="field"><label>What are you selling?</label>
+        <div class="opts">
+          <label><input type="radio" name="Category" value="Beauty & self-care"><span>Beauty &amp; self-care</span></label>
+          <label><input type="radio" name="Category" value="Fashion & activewear"><span>Fashion &amp; activewear</span></label>
+          <label><input type="radio" name="Category" value="Health & wellness"><span>Health &amp; wellness</span></label>
+          <label><input type="radio" name="Category" value="Home & living"><span>Home &amp; living</span></label>
+          <label><input type="radio" name="Category" value="Dog wellness"><span>Dog wellness</span></label>
+          <label><input type="radio" name="Category" value="Something else"><span>Something else</span></label>
+        </div>
+      </div>
+
+      <div class="field"><label>What do you need?</label>
+        <div class="opts">
+          <label><input type="radio" name="Package" value="1 video"><span>1 video</span></label>
+          <label><input type="radio" name="Package" value="3 videos"><span>3 videos</span></label>
+          <label><input type="radio" name="Package" value="Monthly"><span>Monthly</span></label>
+          <label><input type="radio" name="Package" value="Not sure yet"><span>Not sure yet</span></label>
+        </div>
+      </div>
+
+      <div class="field"><label for="notes">Anything else?</label><textarea id="notes" name="Notes" placeholder="The product, the kind of video you have in mind, your timeline."></textarea></div>
+
+      <button class="btn" type="submit">Send enquiry</button>
+      <div class="msg" id="ugc-msg" aria-live="polite"></div>
+      <small>Prefer email? <a href="mailto:chloe@mhemming.com?subject=UGC%20enquiry">chloe@mhemming.com</a></small>
+    </form>
   </section>
 </main>
 <footer>© 2026 Chloe Hemming</footer>
@@ -209,6 +263,22 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
 document.querySelectorAll('.clip .mute').forEach(function(b){
   b.addEventListener('click',function(){var v=b.parentElement.querySelector('video');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';b.setAttribute('aria-label',v.muted?'Unmute':'Mute');});
 });
+</script>
+<script>
+(function(){
+  var f=document.getElementById('ugc-form'),m=document.getElementById('ugc-msg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=f.querySelector('.btn');
+    if(!f.Brand.value.trim()||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())){m.className='msg';m.textContent='Add your brand name and a valid email.';return;}
+    btn.disabled=true;m.className='msg';m.textContent='Sending…';
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f)))})
+    .then(function(r){return r.json();}).then(function(j){
+      if(j.success){m.className='msg ok';m.textContent="Sent. I'll be in touch within two business days.";f.reset();}
+      else{m.className='msg';m.textContent='Something went wrong. Email me instead.';btn.disabled=false;}
+    }).catch(function(){m.className='msg';m.textContent='Something went wrong. Email me instead.';btn.disabled=false;});
+  });
+})();
 </script>
 </body>
 </html>
