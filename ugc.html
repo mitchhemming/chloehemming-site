@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chloe Hemming · UGC</title>
+<meta name="description" content="UGC creator for beauty, fashion, wellness, home and dog brands. Portfolio, content types, rates and how to book.">
+<meta name="theme-color" content="#FBF5F3">
+<meta name="robots" content="noindex">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chloehemming.com/ugc">
+<meta property="og:title" content="Chloe Hemming · UGC creator">
+<meta property="og:description" content="UGC for beauty, fashion, wellness, home and dog brands. Portfolio, rates and how to book.">
+<meta property="og:image" content="https://chloehemming.com/chloe.jpg">
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://chloehemming.com/ugc">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:     #FBF5F3;
+  --paper:  #FFFFFF;
+  --blush:  #FBE6ED;
+  --line:   #F1DEE4;
+  --line2:  #E5C4CF;
+  --ink:    #2A1F24;
+  --ink70:  rgba(42,31,36,.72);
+  --ink50:  rgba(42,31,36,.52);
+  --rose:   #E39AB5;
+  --rose2:  #C9668A;
+  --fh:     'DM Serif Display', Georgia, serif;
+  --fb:     'Nunito', system-ui, sans-serif;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--fb); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; }
+
+.wrap { width: calc(100% - 24px); max-width: 640px; margin: 16px auto; padding: 40px 20px 36px; background: linear-gradient(180deg, #FBE6ED 0%, #F7DCE5 100%); border: 1px solid var(--line2); border-radius: 28px; box-shadow: 0 18px 50px rgba(201,102,138,.14); }
+@media (min-width: 600px) { .wrap { margin: 40px auto; padding: 52px 44px 44px; } }
+
+.back { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--ink50); margin-bottom: 26px; }
+.back:hover { color: var(--rose2); }
+
+/* header */
+.head { display: grid; grid-template-columns: 84px 1fr; gap: 18px; align-items: center; }
+.head .avatar { width: 84px; height: 84px; border-radius: 50%; overflow: hidden; border: 3px solid var(--paper); box-shadow: 0 8px 22px rgba(201,102,138,.22); }
+.head .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.head h1 { font-family: var(--fh); font-weight: 400; font-size: 30px; line-height: 1; }
+.head p { margin-top: 6px; color: var(--ink70); font-size: 15px; line-height: 1.5; }
+@media (min-width: 600px) { .head { grid-template-columns: 104px 1fr; gap: 24px; } .head .avatar { width: 104px; height: 104px; } .head h1 { font-size: 36px; } }
+
+section { margin-top: 40px; }
+h2 { font-family: var(--fh); font-weight: 400; font-size: 24px; line-height: 1.1; margin-bottom: 14px; }
+.lede { color: var(--ink70); font-size: 15px; margin: -6px 0 16px; }
+
+/* video grid */
+.reel { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (min-width: 600px) { .reel { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+.clip { position: relative; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden; background: var(--paper); border: 1px solid rgba(255,255,255,.9); }
+.clip video { width: 100%; height: 100%; object-fit: cover; }
+.clip.soon { display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; background: linear-gradient(160deg, #fff 0%, #FDF1F5 100%); }
+.clip.soon span { font-size: 13px; color: var(--ink50); font-weight: 600; line-height: 1.4; }
+.clip .mute { position: absolute; right: 8px; bottom: 8px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(42,31,36,.55); color: #fff; font-size: 13px; cursor: pointer; }
+
+/* chips */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--paper); border: 1px solid rgba(255,255,255,.9); border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: var(--ink70); }
+
+/* two column lists */
+.list { display: grid; gap: 8px; }
+.list li { list-style: none; background: var(--paper); border-radius: 12px; padding: 12px 16px; font-size: 15px; font-weight: 600; }
+.list li em { display: block; font-style: normal; font-weight: 400; color: var(--ink50); font-size: 13.5px; margin-top: 1px; }
+
+/* accordion */
+details { background: var(--paper); border: 1px solid rgba(255,255,255,.9); border-radius: 14px; margin-top: 8px; }
+details[open] { border-color: var(--line2); }
+summary { list-style: none; cursor: pointer; padding: 16px 18px; font-weight: 700; font-size: 15.5px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: '+'; font-family: var(--fh); font-size: 22px; color: var(--rose2); line-height: 1; transition: transform .2s; }
+details[open] summary::after { transform: rotate(45deg); }
+details .body { padding: 0 18px 16px; color: var(--ink70); font-size: 15px; }
+details .body p + p { margin-top: 8px; }
+
+/* pricing rows */
+.tier { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.tier:first-child { border-top: 0; padding-top: 4px; }
+.tier strong { font-weight: 700; color: var(--ink); display: block; }
+.tier small { display: block; color: var(--ink50); font-size: 13.5px; margin-top: 2px; }
+.tier .price { font-family: var(--fh); font-size: 22px; color: var(--rose2); white-space: nowrap; }
+.tier .price i { font-style: normal; font-family: var(--fb); font-size: 12px; color: var(--ink50); }
+.note { font-size: 13.5px; color: var(--ink50); margin-top: 12px; }
+
+/* contact */
+.cta { background: var(--paper); border-radius: 16px; padding: 22px 20px; text-align: center; }
+.cta p { color: var(--ink70); font-size: 15px; max-width: 420px; margin: 0 auto; }
+.btn { display: inline-block; margin-top: 16px; background: var(--rose2); color: #fff; font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 999px; transition: background .2s, transform .15s; }
+.btn:hover, .btn:focus-visible { background: #B4557A; transform: translateY(-1px); outline: none; }
+.cta small { display: block; margin-top: 12px; color: var(--ink50); font-size: 13px; }
+
+footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(--ink50); letter-spacing: .02em; }
+@media (prefers-reduced-motion: reduce) { summary::after, .btn { transition: none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="/">← chloehemming.com</a>
+
+  <header class="head">
+    <div class="avatar"><img src="chloe.jpg" alt="Chloe Hemming" width="900" height="900"></div>
+    <div>
+      <h1>Chloe Hemming</h1>
+      <p>UGC creator for beauty, fashion, wellness, home and dog brands. Based in Brisbane, happy to receive product anywhere in Australia.</p>
+    </div>
+  </header>
+
+  <section id="work">
+    <h2>Recent work</h2>
+    <p class="lede">Vertical, platform-native, made to be posted on your account.</p>
+    <div class="reel">
+      <!-- Replace each placeholder with:
+      <div class="clip"><video src="video/clip-1.mp4" poster="video/clip-1.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="mute" aria-label="Unmute">🔇</button></div>
+      -->
+      <div class="clip soon"><span>Skincare<br>review</span></div>
+      <div class="clip soon"><span>Activewear<br>try-on</span></div>
+      <div class="clip soon"><span>Supplement<br>routine</span></div>
+      <div class="clip soon"><span>Home<br>unboxing</span></div>
+      <div class="clip soon"><span>Dog wellness<br>demo</span></div>
+      <div class="clip soon"><span>Hair care<br>before &amp; after</span></div>
+    </div>
+  </section>
+
+  <section id="niches">
+    <h2>What I create for</h2>
+    <div class="chips">
+      <span class="chip">Beauty &amp; self-care</span>
+      <span class="chip">Fashion &amp; activewear</span>
+      <span class="chip">Health &amp; wellness</span>
+      <span class="chip">Home &amp; living</span>
+      <span class="chip">Dog wellness</span>
+    </div>
+  </section>
+
+  <section id="formats">
+    <h2>Content types</h2>
+    <ul class="list">
+      <li>Talking to camera <em>reviews, routines, first impressions</em></li>
+      <li>Unboxing and try-on <em>fashion, beauty, home</em></li>
+      <li>Product demo <em>how it works, before and after</em></li>
+      <li>Lifestyle b-roll <em>product in use, no voice</em></li>
+      <li>Voiceover and text on screen <em>for ads and hooks</em></li>
+    </ul>
+  </section>
+
+  <section id="rates">
+    <h2>Rates and details</h2>
+    <details>
+      <summary>Pricing</summary>
+      <div class="body">
+        <!-- PLACEHOLDER PRICES. Update before sharing. -->
+        <div class="tier"><div><strong>1 video</strong><small>15 to 60 seconds, one concept</small></div><div class="price">$250</div></div>
+        <div class="tier"><div><strong>3 videos</strong><small>Three concepts or variations</small></div><div class="price">$650</div></div>
+        <div class="tier"><div><strong>6 videos a month</strong><small>Ongoing, cancel any time</small></div><div class="price">$1,200<i>/month</i></div></div>
+        <p class="note">All prices in AUD and include organic social and paid ad usage. No hidden usage fees.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Turnaround and revisions</summary>
+      <div class="body">
+        <p>Videos are delivered within 7 business days of receiving the product and brief. One round of revisions is included on every video.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Usage rights</summary>
+      <div class="body">
+        <p>Every video includes full organic and paid usage on your own channels and ads. Whitelisting from my account, exclusivity and raw footage are available on request.</p>
+      </div>
+    </details>
+    <details>
+      <summary>How it works</summary>
+      <div class="body">
+        <p>1. Email me with the product and what you'd like to see. 2. I confirm the concept, timeline and price. 3. You send the product. 4. I deliver the videos ready to post.</p>
+      </div>
+    </details>
+  </section>
+
+  <section id="contact">
+    <div class="cta">
+      <h2>Let's make something</h2>
+      <p>Tell me about the product, the content you're after and your timeline. I reply within two business days.</p>
+      <a class="btn" href="mailto:hello@chloehemming.com?subject=UGC%20enquiry">Email me</a>
+      <small>hello@chloehemming.com</small>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Chloe Hemming</footer>
+
+<script>
+document.querySelectorAll('.clip .mute').forEach(function(b){
+  b.addEventListener('click',function(){var v=b.parentElement.querySelector('video');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';b.setAttribute('aria-label',v.muted?'Unmute':'Mute');});
+});
+</script>
+</body>
+</html>
