@@ -218,7 +218,14 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
   </section>
 
   <section id="contact">
-    <form class="form" id="ugc-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
+    <div class="cta" id="contact-simple">
+      <h2>Let's make something</h2>
+      <p>Tell me about the product, the content you're after and your timeline. I reply within two business days.</p>
+      <a class="btn" href="mailto:chloe@mhemming.com?subject=UGC%20enquiry">Let's chat</a>
+      <small>chloe@mhemming.com</small>
+    </div>
+    <!-- Enquiry form: set the Formspree ID in action="" below, then remove hidden and delete #contact-simple -->
+    <form class="form" id="ugc-form" hidden action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
       <h2>Let's make something</h2>
       <p>A few quick details and I'll reply within two business days.</p>
       <input type="hidden" name="_subject" value="UGC enquiry from chloehemming.com">
@@ -265,6 +272,7 @@ document.querySelectorAll('.clip .mute').forEach(function(b){
 <script>
 (function(){
   var f=document.getElementById('ugc-form'),m=document.getElementById('ugc-msg');
+  if(!f||f.hidden)return;
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var btn=f.querySelector('.btn');
