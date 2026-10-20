@@ -218,13 +218,11 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
   </section>
 
   <section id="contact">
-    <form class="form" id="ugc-form" novalidate>
+    <form class="form" id="ugc-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
       <h2>Let's make something</h2>
       <p>A few quick details and I'll reply within two business days.</p>
-      <input type="hidden" name="access_key" value="WEB3FORMS_KEY">
-      <input type="hidden" name="subject" value="UGC enquiry from chloehemming.com">
-      <input type="hidden" name="from_name" value="chloehemming.com">
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="UGC enquiry from chloehemming.com">
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
 
       <div class="field"><label for="brand">Brand</label><input id="brand" name="Brand" type="text" placeholder="Brand name" required></div>
       <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" placeholder="you@brand.com" required autocomplete="email"></div>
@@ -272,9 +270,9 @@ document.querySelectorAll('.clip .mute').forEach(function(b){
     var btn=f.querySelector('.btn');
     if(!f.Brand.value.trim()||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())){m.className='msg';m.textContent='Add your brand name and a valid email.';return;}
     btn.disabled=true;m.className='msg';m.textContent='Sending…';
-    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f)))})
-    .then(function(r){return r.json();}).then(function(j){
-      if(j.success){m.className='msg ok';m.textContent="Sent. I'll be in touch within two business days.";f.reset();}
+    fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
+    .then(function(r){return r.ok?{ok:true}:r.json();}).then(function(j){
+      if(j.ok){m.className='msg ok';m.textContent="Sent. I'll be in touch within two business days.";f.reset();}
       else{m.className='msg';m.textContent='Something went wrong. Email me instead.';btn.disabled=false;}
     }).catch(function(){m.className='msg';m.textContent='Something went wrong. Email me instead.';btn.disabled=false;});
   });
