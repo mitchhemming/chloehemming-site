@@ -90,6 +90,9 @@ summary::after { content: '+'; font-family: var(--fh); font-size: 22px; color: v
 details[open] summary::after { transform: rotate(45deg); }
 details .body { padding: 0 18px 16px; color: var(--ink70); font-size: 15px; }
 details .body p + p { margin-top: 8px; }
+.steps { padding-left: 20px; display: grid; gap: 6px; }
+.steps li { padding-left: 4px; }
+.steps li::marker { color: var(--rose2); font-weight: 700; }
 
 /* pricing rows */
 .tier { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
@@ -188,7 +191,12 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
     <details>
       <summary>How it works</summary>
       <div class="body">
-        <p>1. Email me with the product and what you'd like to see. 2. I confirm the concept, timeline and price. 3. You send the product. 4. I deliver the videos ready to post.</p>
+        <ol class="steps">
+          <li>Email me the product and the package you're after.</li>
+          <li>I confirm the concept and delivery date.</li>
+          <li>You send the product.</li>
+          <li>Videos delivered, ready to post.</li>
+        </ol>
       </div>
     </details>
   </section>
