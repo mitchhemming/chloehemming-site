@@ -70,7 +70,10 @@ h2 { font-family: var(--fh); font-weight: 400; font-size: 24px; line-height: 1.1
 .clip video { width: 100%; height: 100%; object-fit: cover; }
 .clip.soon { display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; background: linear-gradient(160deg, #fff 0%, #FDF1F5 100%); }
 .clip.soon span { font-size: 13px; color: var(--ink50); font-weight: 600; line-height: 1.4; }
-.clip .mute { position: absolute; right: 8px; bottom: 8px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(42,31,36,.55); color: #fff; font-size: 13px; cursor: pointer; }
+.clip .mute { position: absolute; right: 8px; bottom: 8px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(42,31,36,.55); color: #fff; font-size: 13px; cursor: pointer; z-index: 2; }
+.clip .play { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; border: 0; background: rgba(255,255,255,.88); color: var(--rose2); font-size: 18px; padding-left: 4px; cursor: pointer; display: none; z-index: 2; box-shadow: 0 4px 14px rgba(42,31,36,.2); }
+.clip.paused .play { display: block; }
+.clip video { cursor: pointer; }
 
 /* chips */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -142,7 +145,7 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
       <!-- Live clip format:
       <div class="clip"><video src="video/clip-1.mp4" poster="video/clip-1.jpg" muted loop playsinline autoplay preload="metadata" aria-label="..."></video><button class="mute" aria-label="Unmute">🔇</button></div>
       -->
-      <div class="clip soon"><span>Dog wellness<br>unboxing</span></div>
+      <div class="clip"><video src="video/skin-and-coat.mp4" poster="video/skin-and-coat.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Dog skin and coat supplement"></video><button class="play" aria-label="Play">▶</button><button class="mute" aria-label="Unmute">🔇</button></div>
       <div class="clip soon"><span>Dog treat<br>reaction</span></div>
       <div class="clip soon"><span>Skincare<br>review</span></div>
       <div class="clip soon"><span>Activewear<br>try on</span></div>
@@ -222,6 +225,14 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
 
 <script>
 var vids=document.querySelectorAll('.clip video');
+vids.forEach(function(v){
+  var c=v.parentElement;
+  function sync(){c.classList.toggle('paused',v.paused);}
+  v.addEventListener('play',sync);v.addEventListener('pause',sync);
+  v.addEventListener('click',function(){v.paused?v.play():v.pause();});
+  var pb=c.querySelector('.play');if(pb){pb.addEventListener('click',function(){v.play();});}
+  v.play().catch(function(){sync();});
+});
 document.querySelectorAll('.clip .mute').forEach(function(b){
   b.addEventListener('click',function(){
     var v=b.parentElement.querySelector('video');
