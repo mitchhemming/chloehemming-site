@@ -139,15 +139,12 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
   <section id="work">
     <h2>Recent work</h2>
     <div class="reel">
-      <!-- Replace each placeholder with:
-      <div class="clip"><video src="video/clip-1.mp4" poster="video/clip-1.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="mute" aria-label="Unmute">🔇</button></div>
-      -->
+      <div class="clip"><video src="video/clip-1.mp4" poster="video/clip-1.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Dog treat unboxing"></video><button class="mute" aria-label="Unmute">🔇</button></div>
+      <div class="clip"><video src="video/clip-2.mp4" poster="video/clip-2.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Dog treat reaction"></video><button class="mute" aria-label="Unmute">🔇</button></div>
       <div class="clip soon"><span>Skincare<br>review</span></div>
       <div class="clip soon"><span>Activewear<br>try on</span></div>
       <div class="clip soon"><span>Supplement<br>routine</span></div>
       <div class="clip soon"><span>Home<br>unboxing</span></div>
-      <div class="clip soon"><span>Dog wellness<br>demo</span></div>
-      <div class="clip soon"><span>Hair care<br>before &amp; after</span></div>
     </div>
   </section>
 
@@ -221,9 +218,19 @@ footer { text-align: center; padding: 0 20px 28px; font-size: 12px; color: var(-
 <footer>© 2026 Chloe Hemming</footer>
 
 <script>
+var vids=document.querySelectorAll('.clip video');
 document.querySelectorAll('.clip .mute').forEach(function(b){
-  b.addEventListener('click',function(){var v=b.parentElement.querySelector('video');v.muted=!v.muted;b.textContent=v.muted?'🔇':'🔊';b.setAttribute('aria-label',v.muted?'Unmute':'Mute');});
+  b.addEventListener('click',function(){
+    var v=b.parentElement.querySelector('video');
+    var on=v.muted;
+    vids.forEach(function(o){o.muted=true;var ob=o.parentElement.querySelector('.mute');if(ob){ob.textContent='🔇';ob.setAttribute('aria-label','Unmute');}});
+    if(on){v.muted=false;b.textContent='🔊';b.setAttribute('aria-label','Mute');v.play();}
+  });
 });
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.play().catch(function(){});}else{v.pause();}});},{threshold:.25});
+  vids.forEach(function(v){io.observe(v);});
+}
 </script>
 </body>
 </html>
